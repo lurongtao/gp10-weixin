@@ -1,4 +1,4 @@
-const config = require('../config/auth.config')
+const config = require('../config/weixin.config')
 const crypto = require('crypto')
 
 module.exports = {

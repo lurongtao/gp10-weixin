@@ -1,0 +1,399 @@
+upstream tunnel {
+  server 127.0.0.1:7788;
+}
+upstream tunnel2 {
+ server 127.0.0.1:7789;
+}
+upstream tunnel3 {
+ server 127.0.0.1:7790;
+}
+upstream tunnel4 {
+ server 127.0.0.1:7791;
+}
+upstream tunnel5 {
+ server 127.0.0.1:7792;
+}
+upstream tunnel6 {
+ server 127.0.0.1:7793;
+}
+upstream tunnel7 {
+ server 127.0.0.1:7794;
+}
+upstream tunnel8 {
+ server 127.0.0.1:7795;
+}
+upstream tunnel9 {
+ server 127.0.0.1:7796;
+}
+upstream tunnel10 {
+ server 127.0.0.1:7797;
+}
+upstream tunnel11 {
+ server 127.0.0.1:7798;
+}
+upstream tunnel12 {
+ server 127.0.0.1:7799;
+}
+upstream tunnel13 {
+ server 127.0.0.1:7831;
+}
+upstream tunnel14 {
+ server 127.0.0.1:7831;
+}
+upstream tunnel15 {
+ server 127.0.0.1:7800;
+}
+upstream tunnel16 {
+ server 127.0.0.1:7801;
+}
+upstream tunnel17 {
+ server 127.0.0.1:7802;
+}
+upstream tunnel18 {
+ server 127.0.0.1:7803;
+}
+upstream tunnel19 {
+ server 127.0.0.1:7804;
+}
+upstream tunnel20 {
+ server 127.0.0.1:7805;
+}
+upstream tunnel21 {
+ server 127.0.0.1:7806;
+}
+upstream tunnel22 {
+ server 127.0.0.1:7807;
+}
+upstream tunnel23 {
+ server 127.0.0.1:7808;
+}
+upstream tunnel24 {
+ server 127.0.0.1:7809;
+}
+upstream tunnel25 {
+ server 127.0.0.1:7810;
+}
+upstream tunnel26 {
+ server 127.0.0.1:7811;
+}
+upstream tunnel27 {
+ server 127.0.0.1:7812;
+}
+upstream tunnel28 {
+ server 127.0.0.1:7813;
+}
+upstream tunnel29 {
+ server 127.0.0.1:7814;
+}
+upstream tunnel30 {
+ server 127.0.0.1:7815;
+}
+upstream tunnel31 {
+ server 127.0.0.1:7816;
+}
+upstream tunnel32 {
+ server 127.0.0.1:7817;
+}
+upstream tunnel33 {
+ server 127.0.0.1:7818;
+}
+upstream tunnel34 {
+ server 127.0.0.1:7819;
+}
+upstream tunnel35 {
+ server 127.0.0.1:7820;
+}
+upstream tunnel36 {
+ server 127.0.0.1:7821;
+}
+upstream tunnel37 {
+ server 127.0.0.1:7822;
+}
+upstream tunnel38 {
+ server 127.0.0.1:7823;
+}
+upstream tunnel39 {
+ server 127.0.0.1:7824;
+}
+upstream tunnel40 {
+ server 127.0.0.1:7825;
+}
+upstream tunnel41 {
+ server 127.0.0.1:7826;
+}
+upstream tunnel42 {
+ server 127.0.0.1:7827;
+}
+upstream tunnel43 {
+ server 127.0.0.1:7828;
+}
+upstream tunnel44 {
+ server 127.0.0.1:7829;
+}
+upstream tunnel45 {
+ server 127.0.0.1:7830;
+}
+upstream tunnel46 {
+ server 127.0.0.1:7831;
+}
+upstream tunnel47 {
+ server 127.0.0.1:7832;
+}
+upstream tunnel48 {
+ server 127.0.0.1:7833;
+}
+upstream tunnel49 {
+ server 127.0.0.1:7834;
+}
+upstream tunnel50 {
+ server 127.0.0.1:7835;
+}
+upstream tunnel51 {
+ server 127.0.0.1:7836;
+}
+
+server {
+  listen 443;
+  server_name walter666.cn;
+
+  ssl on;
+  ssl_certificate   ssl/walter666.cn.pem;
+  ssl_certificate_key  ssl/walter666.cn.key;
+  ssl_session_timeout 5m;
+  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_prefer_server_ciphers on;
+  
+  location / {
+    proxy_set_header  X-Real-IP  $remote_addr;
+    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    
+    proxy_pass http://tunnel;
+  }
+
+  location /xapi {
+    rewrite /xapi/(.*) /$1 break;
+    proxy_pass http://tunnel2;
+  }
+  location /api2 {
+    rewrite /api2/(.*) /$1 break;
+    proxy_pass http://tunnel3;
+  }
+  location /api3 {
+    rewrite /api3/(.*) /$1 break;
+    proxy_pass http://tunnel4;
+  }
+  location /api4 {
+    rewrite /api4/(.*) /$1 break;
+    proxy_pass http://tunnel5;
+  }
+  location /api5 {
+    rewrite /api5/(.*) /$1 break;
+    proxy_pass http://tunnel6;
+  }
+  location /api6 {
+    rewrite /api6/(.*) /$1 break;
+    proxy_pass http://tunnel7;
+  }
+  location /api7 {
+    rewrite /api7/(.*) /$1 break;
+    proxy_pass http://tunnel8;
+  }
+  location /api8 {
+    rewrite /api8/(.*) /$1 break;
+    proxy_pass http://tunnel9;
+  }
+  location /api9 {
+    rewrite /api9/(.*) /$1 break;
+    proxy_pass http://tunnel10;
+  }
+  location /api10 {
+    rewrite /api10/(.*) /$1 break;
+    proxy_pass http://tunnel11;
+  }
+  location /api11 {
+    rewrite /api11/(.*) /$1 break;
+    proxy_pass http://tunnel12;
+  }
+  location /api12 {
+    rewrite /api12/(.*) /$1 break;
+    proxy_pass http://tunnel13;
+  }
+  location /api13 {
+    rewrite /api13/(.*) /$1 break;
+    proxy_pass http://tunnel14;
+  }
+  location /api14 {
+    rewrite /api14/(.*) /$1 break;
+    proxy_pass http://tunnel15;
+  }
+  location /api15 {
+    rewrite /api15/(.*) /$1 break;
+    proxy_pass http://tunnel16;
+  }
+  location /api16 {
+    rewrite /api16/(.*) /$1 break;
+    proxy_pass http://tunnel17;
+  }
+  location /api17 {
+    rewrite /api17/(.*) /$1 break;
+    proxy_pass http://tunnel18;
+  }
+  location /api18 {
+    rewrite /api18/(.*) /$1 break;
+    proxy_pass http://tunnel19;
+  }
+  location /api19 {
+    rewrite /api19/(.*) /$1 break;
+    proxy_pass http://tunnel20;
+  }
+  location /api20 {
+    rewrite /api20/(.*) /$1 break;
+    proxy_pass http://tunnel21;
+  }
+  location /api21 {
+    rewrite /api21/(.*) /$1 break;
+    proxy_pass http://tunnel22;
+  }
+  location /api22 {
+    rewrite /api22/(.*) /$1 break;
+    proxy_pass http://tunnel23;
+  }
+  location /api23 {
+    rewrite /api23/(.*) /$1 break;
+    proxy_pass http://tunnel24;
+  }
+  location /api24 {
+    rewrite /api24/(.*) /$1 break;
+    proxy_pass http://tunnel25;
+  }
+  location /api25 {
+    rewrite /api25/(.*) /$1 break;
+    proxy_pass http://tunnel26;
+  }
+  location /api26 {
+    rewrite /api26/(.*) /$1 break;
+    proxy_pass http://tunnel27;
+  }
+  location /api27 {
+    rewrite /api27/(.*) /$1 break;
+    proxy_pass http://tunnel28;
+  }
+  location /api28 {
+    rewrite /api28/(.*) /$1 break;
+    proxy_pass http://tunnel29;
+  }
+  location /api29 {
+    rewrite /api29/(.*) /$1 break;
+    proxy_pass http://tunnel30;
+  }
+  location /api30 {
+    rewrite /api30/(.*) /$1 break;
+    proxy_pass http://tunnel31;
+  }
+  location /api31 {
+    rewrite /api31/(.*) /$1 break;
+    proxy_pass http://tunnel32;
+  }
+  location /api32 {
+    rewrite /api32/(.*) /$1 break;
+    proxy_pass http://tunnel33;
+  }
+  location /api33 {
+    rewrite /api33/(.*) /$1 break;
+    proxy_pass http://tunnel34;
+  }
+  location /api34 {
+    rewrite /api34/(.*) /$1 break;
+    proxy_pass http://tunnel35;
+  }
+  location /api35 {
+    rewrite /api35/(.*) /$1 break;
+    proxy_pass http://tunnel36;
+  }
+  location /api36 {
+    rewrite /api36/(.*) /$1 break;
+    proxy_pass http://tunnel37;
+  }
+  location /api37 {
+    rewrite /api37/(.*) /$1 break;
+    proxy_pass http://tunnel38;
+  }
+  location /api38 {
+    rewrite /api38/(.*) /$1 break;
+    proxy_pass http://tunnel39;
+  }
+  location /api39 {
+    rewrite /api39/(.*) /$1 break;
+    proxy_pass http://tunnel40;
+  }
+  location /api40 {
+    rewrite /api40/(.*) /$1 break;
+    proxy_pass http://tunnel41;
+  }
+  location /api41 {
+    rewrite /api41/(.*) /$1 break;
+    proxy_pass http://tunnel42;
+  }
+  location /api42 {
+    rewrite /api42/(.*) /$1 break;
+    proxy_pass http://tunnel43;
+  }
+  location /api43 {
+    rewrite /api43/(.*) /$1 break;
+    proxy_pass http://tunnel44;
+  }
+  location /api44 {
+    rewrite /api44/(.*) /$1 break;
+    proxy_pass http://tunnel45;
+  }
+  location /api45 {
+    rewrite /api45/(.*) /$1 break;
+    proxy_pass http://tunnel46;
+  }
+  location /api46 {
+    rewrite /api46/(.*) /$1 break;
+    proxy_pass http://tunnel47;
+  }
+  location /api47 {
+    rewrite /api47/(.*) /$1 break;
+    proxy_pass http://tunnel48;
+  }
+  location /api48 {
+    rewrite /api48/(.*) /$1 break;
+    proxy_pass http://tunnel49;
+  }
+  location /api49 {
+    rewrite /api49/(.*) /$1 break;
+    proxy_pass http://tunnel50;
+  }
+  location /api50 {
+    rewrite /api50/(.*) /$1 break;
+    proxy_pass http://tunnel51;
+  }
+}
+
+[
+  {
+    "name": "zhaoqian",
+    "age": 18
+  },
+  {
+    "name": "ziming",
+    "age": 19
+  }
+]
+
+<xml>
+  <person name="zhaoqian" age="18"></person>
+  <person name="ziming" age="19"></person>
+</xml>
+
+<xml>
+  <person>
+    <name>zhaoqian</name>
+    <age>18</age>
+  </person>
+</xml>
