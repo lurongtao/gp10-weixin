@@ -9,19 +9,21 @@ const pool  = mysql.createPool({
 })
 
 // 在数据池中进行会话操作
-module.exports = (sql, config, cb) => {
-  pool.getConnection(function(err, connection) {
-    if (err) throw err;
+module.exports = (sql, config) => {
+  return new Promise((resolve, reject) => {
+    pool.getConnection(function(err, connection) {
+      if (err) throw err;
+    
+      connection.query(sql, config, (error, results, fields) => {
   
-    connection.query(sql, config, (error, results, fields) => {
-
-      cb(results)
-  
-      // 结束会话
-      connection.release();
-  
-      // 如果有错误就抛出
-      if (error) throw error;
+        resolve(results)
+    
+        // 结束会话
+        connection.release();
+    
+        // 如果有错误就抛出
+        if (error) throw error;
+      })
     })
   })
 }

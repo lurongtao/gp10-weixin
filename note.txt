@@ -399,3 +399,11 @@ server {
 </xml>
 
 http://note.youdao.com/noteshare?id=b33e1da02d9466ddb66245f8cd9e5085
+
+
+ssh root@47.92.241.253
+ssh -vnNt -R 7788:localhost:3000 root@47.92.241.253
+emyliapei.cn
+18629489705
+
+http://note.youdao.com/noteshare?id=aa2e2ab4087c7e1c90d277c6e9f30faf
